@@ -10,6 +10,8 @@ class Particle {
         this.color=color(random(0, 255), random(0, 255), random(0, 255));
         World.add(world, this.body);
 
+        this.game=true
+
     }
     display() {
 
@@ -24,7 +26,15 @@ class Particle {
         fill(this.color)
         ellipseMode(RADIUS);
         ellipse(0, 0, this.r,this.r);
+
+        if(this.game===true){
+            if(pos.x>width && pos.y<height-50)
+            score+=500
+            else
+            score+=200
+            this.game=false
+        }
         pop();
     }
 
-};
+}
